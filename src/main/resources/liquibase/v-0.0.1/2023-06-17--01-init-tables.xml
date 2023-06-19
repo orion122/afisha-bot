@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="ramazan">
+        <sql>
+            create table users
+            (
+                id  bigserial
+                    constraint users_pk
+                        primary key,
+                user_tg_id bigint,
+                fio varchar not null
+            );
+
+            create unique index users_user_tg_id_uindex
+                on users (user_tg_id);
+        </sql>
+
+        <sql>
+            create table events
+            (
+                id          bigserial
+                    constraint events_pk
+                        primary key,
+                name        varchar   not null,
+                description varchar,
+                beginning   timestamp not null,
+                seats       integer   not null,
+                free_seats_count integer   not null
+            );
+        </sql>
+
+        <sql>
+            create table registrations
+            (
+                id       bigserial
+                    constraint registrations_pk
+                        primary key,
+                user_tg_id  bigint,
+                event_id bigint
+            );
+
+            create unique index registrations_user_tg_id_event_id_uindex
+                on registrations (user_tg_id, event_id);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

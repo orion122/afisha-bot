@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2" author="ramazan">
+        <insert tableName="events">
+            <column name="name">Концерт Киркорова</column>
+            <column name="description">Концерт поп-короля российской сцены!</column>
+            <column name="beginning">2000-01-01 20:00</column>
+            <column name="seats">10000</column>
+            <column name="free_seats_count">10000</column>
+        </insert>
+        <insert tableName="events">
+            <column name="name">Стендап Ивана Абрамова</column>
+            <column name="description">Новая программа</column>
+            <column name="beginning">2023-07-02 20:00</column>
+            <column name="seats">700</column>
+            <column name="free_seats_count">700</column>
+        </insert>
+        <insert tableName="events">
+            <column name="name">Стендап Андрея Бебуришвили</column>
+            <column name="description">Имеются противопоказания</column>
+            <column name="beginning">2023-08-03 20:00</column>
+            <column name="seats">5</column>
+            <column name="free_seats_count">5</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="3" author="ramazan">
+        <sql>
+            create table user_inner_states
+            (
+                id         bigserial
+                    constraint user_inner_states_pk
+                        primary key,
+                user_tg_id bigint,
+                state      varchar default 'NEW' not null
+            );
+            create unique index user_inner_states_user_tg_id_uindex
+                on user_inner_states (user_tg_id);
+        </sql>
+
+        <sql>
+            create table user_action_states
+            (
+                id      bigserial
+                    constraint user_action_states_pk
+                        primary key,
+                user_tg_id bigint,
+                state   varchar
+            );
+
+            create unique index user_action_states_user_tg_id_uindex
+                on user_action_states (user_tg_id);
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
